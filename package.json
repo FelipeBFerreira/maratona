@@ -1,0 +1,8 @@
+{
+  "name": "maratona",
+  "version": "1.0.0",
+  "description": "Freelance Calculator",
+  "main": "index.js",
+  "author": "Felipe Bezerra <felipe.f3rreira@gmail.com>",
+  "license": "MIT"
+}
