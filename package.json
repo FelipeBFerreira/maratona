@@ -2,7 +2,16 @@
   "name": "maratona",
   "version": "1.0.0",
   "description": "Freelance Calculator",
-  "main": "index.js",
+  "main": "src/server.js",
   "author": "Felipe Bezerra <felipe.f3rreira@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev" : "nodemon ."
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
