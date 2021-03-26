@@ -6,9 +6,10 @@
   "author": "Felipe Bezerra <felipe.f3rreira@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev" : "nodemon ."
+    "dev": "nodemon ."
   },
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1"
   },
   "devDependencies": {
