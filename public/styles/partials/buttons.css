@@ -65,7 +65,15 @@ button.button {
 
 .button.white:hover {
   background: #F0F2F5;
+ 
 }
+
+/* Begin Linha alterado para favorecer a Respansividade de aplicativos de tela menor*/
+
+.button img{
+  width: 1.5rem;
+}
+/*End */
 
 .button-group {
   display: flex;

@@ -62,6 +62,15 @@
   }
 }
 
+/* Begin Linha alterado para favorecer a Respansividade de aplicativos de tela menor*/
+@media(max-width: 450px) {
+  :root {
+    font-size: 42.25%; /* 10px */
+  }
+}
+
+/*End */
+
 /* tags styling */
 body {
   background: var(--color-background);
