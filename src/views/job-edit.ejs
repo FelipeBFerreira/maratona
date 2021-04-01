@@ -23,17 +23,19 @@
       rel="stylesheet"
     />
 
-    <script type="module" src="./scripts/job-edit.js"></script>
+    <script type="module" src="/scripts/job-edit.js"></script>
     
   </head>
   <body id="page-job-edit">
-
-    <%- include('parts/page-header' , { title:'Editar Job' })%>
+    
+    <%- include('parts/page-header', { title: 'Editar Job'}) %>
 
     <div class="container flex animate-up delay-2">
-      
-          <!-- Alteração Aula 2 Begin -->
-        <form id="form-job" action="/job" method="POST">
+
+
+        <form id="form-job" 
+        method="post"
+        action="/job/<%= job.id %>">
 
           <fieldset>
             <legend>Dados do Job</legend>
@@ -45,7 +47,7 @@
                 type="text" 
                 id="name" 
                 name="name"
-                value="Pizzaria Guloso"
+                value="<%= job.name %> "
               />
             </div>
 
@@ -58,7 +60,7 @@
                   step="0.1" 
                   id="daily-hours" 
                   name="daily-hours"
-                  value="2"/>
+                  value="<%= job["daily-hours"] %>"/>
               </div>
 
               <div class="input-wrapper">
@@ -68,7 +70,7 @@
                   type="number"
                   id="total-hours" 
                   name="total-hours"
-                  value="40" />
+                  value="<%= job["total-hours"] %>" />
               </div>
             </div>
           </fieldset>
@@ -78,7 +80,7 @@
       <aside class="card">
         <img src="/images/money-color.svg" alt="Imagem de Dinheiro">
         <p>
-          O valor do projeto ficou em <strong>R$ 4576,00</strong>
+          O valor do projeto ficou em <strong>R$ <%= job.budget.toFixed(2).replace(".", ",") %> </strong>
         </p>
         <div class="button-group">
           <button 
@@ -87,7 +89,7 @@
             type="submit" 
             title="Salvar Dados">Salvar</button>
           <a 
-            href="/" 
+            href="#" 
             class="button gray open-modal"
             >
             <img 
@@ -107,7 +109,7 @@
         <h3>Excluir Job</h3>
         <p>Quer mesmo excluir esse job? <br/>
         Ele será apagado para sempre.  
-        <p>
+        </p>
         <footer>
           <a 
             class="button gray" 
@@ -120,10 +122,9 @@
       </div>
       <form 
         method="post" 
-        action="/job/delete/{JOBID}" 
+        action="/job/delete/<%= job.id %> " 
         id="delete-job"></form>
     </div>
     <!-- end modal-wrapper -->
   </body>
 </html>
- 
