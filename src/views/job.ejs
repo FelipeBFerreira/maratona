@@ -25,7 +25,7 @@
   </head>
   <body id="page-job">
     <%- include('parts/page-header' , { title:'Adicionar novo Job' })%>
-
+      
     <div class="container flex animate-up delay-2">
       <main>
         <!-- Alteração Aula 2 Begin -->
@@ -36,7 +36,7 @@
 
             <div class="input-wrapper">
               <label for="name">Nome do Job</label>
-              <input type="text" id="name" name="name" />
+              <input type="text" id="name" name="name" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required />
             </div>
 
             <div class="input-group">
@@ -47,7 +47,7 @@
                   type="number"
                   step="0.1" 
                   id="daily-hours" 
-                  name="daily-hours"/>
+                  name="daily-hours"  required/>
               </div>
 
               <div class="input-wrapper">
@@ -56,7 +56,7 @@
                 <input 
                   type="number"
                   id="total-hours" 
-                  name="total-hours" />
+                  name="total-hours"  required/>
               </div>
             </div>
           </fieldset>
@@ -69,6 +69,7 @@
           Preencha os dados ao lado para
           ver o valor do projeto
         </p>
+        <section class="sectionid">
         <div class="button-group">
           <button 
             class="button green" 
@@ -84,9 +85,11 @@
               title="Cancelar cadastro">
           </a>
         </div>
+      </section>
       </aside>
       
     </div>
+    <script src="/maratona/public/scripts/job.js"></script>
     <!-- end container -->
   </body>
 </html>

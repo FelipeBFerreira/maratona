@@ -32,10 +32,11 @@
         <h2 class="sr-only">Homepage</h2>
         <img id="logo" src="/images/logo.svg" alt="Logo" />
         <span id="notification">
-          <img src="/images/alert-octagon.svg" alt="Alerta" />
+          <img  src="/images/alert-octagon.svg" alt="Alerta" />
         
           <% if(freeHours <= 0) { %>
-            Você não tem horas livres
+            Nenhum tempo disponivel!
+            
           <% } else { %> 
           Você tem <%= freeHours %> horas livres no seu dia
           <% } %>
@@ -77,7 +78,7 @@
           </div>
         </div>
         <a class="button orange" href="/job">
-          <span>
+          <span >
             <img src="/images/plus-24.svg" alt="Novo Job" />
           </span>
           Adicionar novo job
@@ -95,7 +96,7 @@
       <div class="cards">
         <%jobs.forEach((job)=> { %>
 
-          <div class="card <%=job.status%>" data-id="<%=job.id%>">
+          <div class="card <%=job.status%> " data-id="<%=job.id%>">
             <div class="id column">
               <%=job.id%>
             </div>

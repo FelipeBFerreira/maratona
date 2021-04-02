@@ -31,8 +31,6 @@ module.exports = {
         /**  Quantidade de horas disponivel para trabalhar em projeto em andamento ou em novos */
         const freeHours = profile['hours-per-day'] - jobTotalHours;
 
-        console.log(freeHours)
-
         return res.render("index", { jobs: updatedJobs, profile: profile, statusCount, freeHours: freeHours })
     }
 }
