@@ -6,7 +6,7 @@ module.exports = {
 /**Açterando o retorno da function Get para receber um await e sempre que haver o uso do await necessitará do async */
    async index(req, res) {
         /** importando os valores de get e jogando na variavel criado */
-        const jobs = Job.get();
+        const jobs =  await Job.get();
         const profile = await Profile.get();
 
         let statusCount = {

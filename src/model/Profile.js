@@ -1,17 +1,4 @@
-let data2 = {
-    name: "Felipe Ferreira",
-    avatar: "https://github.com/FelipebFerreira.png",
-    "monthly-budget": 3000,
-    "days-per-week": 5,
-    "hours-per-day": 10,
-    "vacation-per-year": 4,
-    "value-hour": 75
-};
-
 const Database = require('../db/config');
-
-
-
 
 module.exports = {
     async get() {
@@ -35,7 +22,21 @@ module.exports = {
         };
     },
     /* atualizar o valor vindo no controllers*/
-    update(newData) {
-        data = newData;
+    async update(newData) {
+        const db = await Database();
+
+    await db.run(`UPDATE profile SET 
+                name = "${newData.name}",
+                avatar = "${newData.avatar}",
+                monthly_budget = ${newData["monthly-budget"]},
+                days_per_week = ${newData["days-per-week"]},
+                hours_per_day = ${newData["hours-per-day"]},
+                vacation_per_year = ${newData["vacation-per-year"]},
+                value_hour = ${newData["value-hour"]}
+                `);
+
+
+
+        await db.close();
     }
 }

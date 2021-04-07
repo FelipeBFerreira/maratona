@@ -8,28 +8,23 @@ module.exports = {
         return res.render('job');
     },
 
-    save(req, res) {
-        const jobs = Job.get();
-        const lastId = jobs[jobs.length - 1]?.id || 0;
+   async  save(req, res) {
 
-        /* ? comparativo para escolha caso o dados não seja encontrado*/
-        /* Erro no Maik da aula*/
-
-        Job.create({
-            id: lastId + 1,
+      await  Job.create({
+            
             name: req.body.name,
             "daily-hours": req.body["daily-hours"],
             "total-hours": req.body["total-hours"],
-            createdAt: Date.now()
+            created_at: Date.now()
         })
 
            return res.redirect('/')
     },
 
-    show(req, res) {
+  async  show(req, res) {
 
-        const jobs = Job.get();
-        const profile = Profile.get();
+        const jobs =  await Job.get();
+        const profile = await Profile.get();
 
         const jobId = req.params.id;
 
@@ -44,34 +39,17 @@ module.exports = {
         return res.render('job-edit', { job })
     },
 
-    update(req, res) {
+    async update(req, res) {
 
-        const jobs = Job.get();
         const jobId = req.params.id;
-        const job = jobs.find(job => Number(job.id) === Number(jobId));
-
-
-        if (!job) {
-            return res.send('Job not Found!');
-        }
-
+        
         const updatedJob = {
-            ...job, /* Joga os valores espalhados */
             name: req.body.name,
             "total-hours": req.body["total-hours"],
             "daily-hours": req.body["daily-hours"],
         }
-
-        const newJobs = jobs.map(job => {
-
-            if (Number(job.id) === Number(jobId)) {
-                job = updatedJob
-            }
-
-            return job;
-        })
-
-        Job.update(newJobs)
+    
+       await Job.update(updatedJob , jobId)
         
         res.redirect('/job/' + jobId)
     },
