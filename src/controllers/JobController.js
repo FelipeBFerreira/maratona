@@ -14,14 +14,16 @@ module.exports = {
 
         /* ? comparativo para escolha caso o dados não seja encontrado*/
         /* Erro no Maik da aula*/
-        jobs.push({
+
+        Job.create({
             id: lastId + 1,
             name: req.body.name,
             "daily-hours": req.body["daily-hours"],
             "total-hours": req.body["total-hours"],
             createdAt: Date.now()
-        });
-        return res.redirect('/')
+        })
+
+           return res.redirect('/')
     },
 
     show(req, res) {

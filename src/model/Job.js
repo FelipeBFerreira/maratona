@@ -25,6 +25,12 @@ module.exports = {
     },
     delete(id) {
         data = data.filter(job => Number(job.id) !== Number(id));
+    },
+    /*Pendencia do inicio da aula*/
+    create(newJob){
+        data.push(newJob);
     }
+
+
 
 }

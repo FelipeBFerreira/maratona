@@ -3,11 +3,11 @@ const Profile = require('../model/Profile')
 const JobUtils = require('../utils/JobUtils')
 
 module.exports = {
-
-    index(req, res) {
+/**Açterando o retorno da function Get para receber um await e sempre que haver o uso do await necessitará do async */
+   async index(req, res) {
         /** importando os valores de get e jogando na variavel criado */
         const jobs = Job.get();
-        const profile = Profile.get();
+        const profile = await Profile.get();
 
         let statusCount = {
             progress: 0,
