@@ -5,6 +5,8 @@ const ProfileController = require('./controllers/ProfileController')
 const DashboardController = require('./controllers/DashboardController');
 const JobController = require('./controllers/JobController');
 
+/**Modified for structure login with authentication  page  */
+
 routes.get('/', DashboardController.index);
 routes.get('/job', JobController.create);
 routes.post('/job', JobController.save);

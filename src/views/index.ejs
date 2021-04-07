@@ -26,121 +26,14 @@
 </head>
 
 <body id="page-index">
-  <header class="page-header">
-    <div class="container">
-      <section id="top" class="animate-up">
-        <h2 class="sr-only">Homepage</h2>
-        <img id="logo" src="/images/logo.svg" alt="Logo" />
-        <span id="notification">
-          <img  src="/images/alert-octagon.svg" alt="Alerta" />
-        
-          <% if(freeHours <= 0) { %>
-            Nenhum tempo disponivel!
-            
-          <% } else { %> 
-          Você tem <%= freeHours %> horas livres no seu dia
-          <% } %>
 
-        </span>
-
-        <a href="/profile" id="avatar-profile">
-          <p>
-            <%=profile.name%><span>Ver perfil</span>
-          </p>
-          <img src="<%=profile.avatar%>" alt="<%=profile.name%>" />
-        </a>
-      </section>
-
-      <div class="separator"></div>
-      <!--Begin Felipe Bezerra-->
-      <section id="summary" class="animate-up delay-1">
-        <h2 class="sr-only">Sumário</h2>
-
-        <div class="info">
-          <div class="total">
-            <strong>
-              <%=statusCount.total%>
-            </strong>
-            Projetos ao total
-          </div>
-          <div class="in-progress">
-
-            <strong>
-              <%=statusCount.progress%>
-            </strong>
-            Em andamento
-          </div>
-          <div class="finished">
-            <strong>
-              <%=statusCount.done%>
-            </strong>
-            Encerrados
-          </div>
-        </div>
-        <a class="button orange" href="/job">
-          <span >
-            <img src="/images/plus-24.svg" alt="Novo Job" />
-          </span>
-          Adicionar novo job
-        </a>
-      </section>
-      <!--end by Felipe Bezerra-->
-    </div>
-  </header>
+  <%- include('../views/parts/header')%>
 
   <div class="container">
-    <main class="animate-up delay-2">
-      <h1 class="sr-only">Trabalhos</h1>
 
-      <!--Alterando estrutura para um repitição com forEach Aula 2 Begin -->
-      <div class="cards">
-        <%jobs.forEach((job)=> { %>
+    
+    <%- include('../views/parts/main')%>
 
-          <div class="card <%=job.status%> " data-id="<%=job.id%>">
-            <div class="id column">
-              <%=job.id%>
-            </div>
-            <div class="name column">
-              <%=job.name%>
-            </div>
-            <div class="deadline column">
-              <span>Prazo</span>
-              <p>
-                <% if(job.status==='progress' ) { %>
-
-                  <%=job.remaining%> Dias para a entrega
-                    <% }else {%>
-
-                      Prazo Encerrado
-                      <%}%>
-              </p>
-            </div>
-            <div class="amount column">
-              <span>Valor</span>
-              <p>R$ <%=job.budget.toFixed(2).replace(".", "," )%>
-              </p>
-            </div>
-            <div class="status badge column">
-              <%=job.status==='done' ? 'Encerrado' : 'Em Andamento' %>
-            </div>
-            <div class="actions column flex">
-              <p class="sr-only">Ações</p>
-              <a href="/job/<%=job.id%>" class="button white edit" title="Editar Job">
-                <img src="/images/edit-24.svg" alt="Editar Job" />
-              </a>
-              <button class="delete button white" title="Excluir Job">
-                <img src="/images/trash-24.svg" alt="Excluir Job" />
-              </button>
-            </div>
-          </div>
-
-          <%})%>
-            <!-- end card -->
-            <!--Alterando estrutura para um repitição com forEach Aula 2 End -->
-
-      </div>
-      <!-- end cards -->
-    </main>
   </div>
   <!-- end container -->
 

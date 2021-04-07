@@ -1,5 +1,12 @@
 const Database = require('./config')
 
+
+const sqlUser = `CREATE TABLE users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    password INT
+);`
+
 const sqlProfile = `CREATE TABLE profile(
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         name TEXT,
@@ -17,6 +24,16 @@ const sqlJob = `CREATE TABLE jobs(
                     total_hours  INT, 
                     created_at DATETIME
     );`
+
+let insertusers = (`INSERT INTO users(
+        name,
+        password
+        ) VALUES (
+            "felipe.f3rreira@gmail.com",
+            123456      
+            );`
+)
+
 let insertProfile = (`INSERT INTO profile(
                         name,
                         avatar,
@@ -50,7 +67,9 @@ const initDb = {
                 /**Criação das Tables no banco de dados */
                 await db.exec(sqlProfile);
                 await db.exec(sqlJob);
+                await db.exec(sqlUser);
                 /**Criação da estrutura inserindo os registro no banco de dados*/
+                await db.run(insertusers);
                 await db.run(insertProfile);
                 await db.run(insertJobGuloso)
                 await db.run(insertJobProject)

@@ -62,7 +62,6 @@ module.exports = {
 
         await db.close();
 
-        data.push(newJob);
     }
 
 
