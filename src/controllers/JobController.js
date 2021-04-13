@@ -16,7 +16,7 @@ module.exports = {
         const profile = await Profile.get();
         const freeHoures = await Job.gethoursFree();
 
-        if (req.body["daily-hours"] <= ((profile["hours-per-day"]) - freeHoures.FreeHours)) {
+        if (req.body["daily-hours"] <= ((profile["hours-per-day"]) - freeHoures.FreeHours)  ) {
             
             await Job.create({
                 name: req.body.name,

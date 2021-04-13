@@ -4,8 +4,12 @@ const routes = express.Router();
 const ProfileController = require('./controllers/ProfileController')
 const DashboardController = require('./controllers/DashboardController');
 const JobController = require('./controllers/JobController');
+const AutenticationController = require('./controllers/AutenticationController');
 
 /**Modified for structure login with authentication  page  */
+
+routes.get('/login', AutenticationController.signup, )
+routes.post('/login', AutenticationController.Login, )
 
 routes.get('/', DashboardController.index);
 routes.get('/job', JobController.create);

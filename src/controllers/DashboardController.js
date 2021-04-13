@@ -1,6 +1,10 @@
 const Job = require('../model/Job')
+const Autentication = require('../model/Autentication')
 const Profile = require('../model/Profile')
 const JobUtils = require('../utils/JobUtils')
+
+
+
 
 module.exports = {
 /**Açterando o retorno da function Get para receber um await e sempre que haver o uso do await necessitará do async */
@@ -30,10 +34,10 @@ module.exports = {
         })
         /**  Quantidade de horas disponivel para trabalhar em projeto em andamento ou em novos */
         const freeHours = profile['hours-per-day'] - jobTotalHours;
-
+        const message = "Seja bem vindo"
+   
         return res.render("index", { jobs: updatedJobs, profile: profile, statusCount, freeHours: freeHours })
     }
-
 
     
 }

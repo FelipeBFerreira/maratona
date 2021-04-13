@@ -72,7 +72,7 @@ module.exports = {
 
         const db = await Database();
         /** RETORNA TODOS OS VALORES DO BANCO DE DADOS */
-       const Hours = await db.get(`SELECT SUM(daily_hours) as "FreeHours" FROM jobs`);
+       const Hours = await db.get(`SELECT SUM(daily_hours) as "FreeHours" FROM jobs WHERE total_hours >= 1`);
 
         await db.close
         return Hours

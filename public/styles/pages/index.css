@@ -275,3 +275,41 @@ main {
     grid-area: rb;
   }
 }
+
+
+/* Linha de alteração para o href Sign Out Begin */
+
+#avatar-signup {
+  display: flex;
+  align-items: center;
+  color: var(--color-white);
+  text-decoration: none;
+  float: right;  
+  margin-top: -20px;
+  margin-right: -15px;
+  font-family: IBM Plex Sans;
+  text-align: right;
+}
+
+#avatar-signup p {
+  font-size: 1.25rem; /* 20px of 16px root*/
+  line-height: 1.875rem; /*30px of 16px root*/
+  margin-right: 1.25rem;
+
+  font-weight: 600;
+}
+
+#avatar-signup span {
+  display: block;
+
+  font-weight: normal;
+  font-size: 0.875rem; /* 14px of 16px root*/
+  line-height: 1.5rem; /* 24px of 16px root*/
+
+  font-weight: 400;
+}
+
+#avatar-signup p span:hover {
+  text-decoration: underline;
+  color:var(--color-secondary);
+}
