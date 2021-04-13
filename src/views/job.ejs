@@ -28,6 +28,7 @@
       
     <div class="container flex animate-up delay-2">
       <main>
+        
         <!-- Alteração Aula 2 Begin -->
         <form id="form-job" action="/job" method="POST">
           <fieldset>
@@ -37,7 +38,10 @@
             <div class="input-wrapper">
               <label for="name">Nome do Job</label>
               <input type="text" id="name" name="name" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required />
+        
             </div>
+            <div id="timeLeft"><img src="/images/timeLeft.png" alt="Tempo Disponivel"><h2><%=Mensagem%></h2></div>
+
 
             <div class="input-group">
               <div class="input-wrapper">

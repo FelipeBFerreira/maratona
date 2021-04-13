@@ -74,9 +74,9 @@ input::placeholder{
 button{
     font-family: var(--font);
     font-weight: 600;
-    font-size: 3rem;
-    width: 12rem;
-    height: 5rem;
+    font-size: 1.65rem;
+    width: 8rem;
+    height: 3rem;
     border-radius: 1.25rem;
     padding: 0.50rem;
     margin-top: 0.35rem;

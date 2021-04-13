@@ -4,20 +4,35 @@ const JobUtils = require('../utils/JobUtils')
 
 module.exports = {
 
-    create(req, res) {
-        return res.render('job');
+    async create(req, res) {
+
+        const profile = await Profile.get();
+        const freeHoures = await Job.gethoursFree();
+
+        if (req.body["daily-hours"] <= ((profile["hours-per-day"]) - freeHoures.FreeHours)) {
+
+            const message = "Tempo disponivel : " + ((profile["hours-per-day"]) - freeHoures.FreeHours) + " Hs"
+            return res.render("job", { Mensagem: message })
+
+        } else {
+
+            const message = "Tempo disponivel : " + ((profile["hours-per-day"]) - freeHoures.FreeHours) + " Hs"
+            return res.render("job", { Mensagem: message })
+
+        }
+        //return res.render('job', { Mensagem: message });
     },
-/** Usa a nova chamada gethoursFree para controlar o valor de horas antes de inserir o valor direto no SQLITE.
- *  Calculando o valor ja usando nos Job e subtraindo do valor total disponivel no perfil, 
- *  e com isso evitasse registra job sem tempo disponivel 
- * Begin
- */
+    /** Usa a nova chamada gethoursFree para controlar o valor de horas antes de inserir o valor direto no SQLITE.
+     *  Calculando o valor ja usando nos Job e subtraindo do valor total disponivel no perfil, 
+     *  e com isso evitasse registra job sem tempo disponivel 
+     * Begin
+     */
     async save(req, res) {
         const profile = await Profile.get();
         const freeHoures = await Job.gethoursFree();
 
-        if (req.body["daily-hours"] <= ((profile["hours-per-day"]) - freeHoures.FreeHours)  ) {
-            
+        if (req.body["daily-hours"] <= ((profile["hours-per-day"]) - freeHoures.FreeHours)) {
+
             await Job.create({
                 name: req.body.name,
                 "daily-hours": req.body["daily-hours"],
@@ -25,13 +40,14 @@ module.exports = {
                 created_at: Date.now()
             })
         } else {
+            const message = " Voce so possui : " + ((profile["hours-per-day"]) - freeHoures.FreeHours) + " disponivel "
+            return res.redirect('/')
 
-            return res.send(" Voce so possui : " + ((profile["hours-per-day"]) - freeHoures.FreeHours) + " disponivel ")
         }
 
         return res.redirect('/')
     },
-/** End */
+    /** End */
 
     async show(req, res) {
 
