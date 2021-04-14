@@ -11,17 +11,19 @@ module.exports = {
 
         if (req.body["daily-hours"] <= ((profile["hours-per-day"]) - freeHoures.FreeHours)) {
 
-            const message = "Tempo disponivel : " + ((profile["hours-per-day"]) - freeHoures.FreeHours) + " Hs"
+            const message = "Você tem "+((profile["hours-per-day"]) - freeHoures.FreeHours) + " Hs Disponiveis"
             return res.render("job", { Mensagem: message })
 
         } else {
 
-            const message = "Tempo disponivel : " + ((profile["hours-per-day"]) - freeHoures.FreeHours) + " Hs"
+            const message = "Você tem "+((profile["hours-per-day"]) - freeHoures.FreeHours) + " Hs Disponiveis"
             return res.render("job", { Mensagem: message })
 
         }
+
         //return res.render('job', { Mensagem: message });
     },
+
     /** Usa a nova chamada gethoursFree para controlar o valor de horas antes de inserir o valor direto no SQLITE.
      *  Calculando o valor ja usando nos Job e subtraindo do valor total disponivel no perfil, 
      *  e com isso evitasse registra job sem tempo disponivel 
@@ -40,8 +42,8 @@ module.exports = {
                 created_at: Date.now()
             })
         } else {
-            const message = " Voce so possui : " + ((profile["hours-per-day"]) - freeHoures.FreeHours) + " disponivel "
-            return res.redirect('/')
+            const message = "Voce informou: " + req.body["daily-hours"] + " Hs mais só tem disponivel " + ((profile["hours-per-day"]) - freeHoures.FreeHours)+" Hs"
+            return res.render("job", { Mensagem: message })
 
         }
 

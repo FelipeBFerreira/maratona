@@ -36,7 +36,7 @@ module.exports = {
         const freeHours = profile['hours-per-day'] - jobTotalHours;
         const message = "Seja bem vindo"
    
-        return res.render("index", { jobs: updatedJobs, profile: profile, statusCount, freeHours: freeHours })
+        return res.render("index", { jobs: updatedJobs, profile: profile, statusCount, freeHours: freeHours , Mensagem: message})
     }
 
     
